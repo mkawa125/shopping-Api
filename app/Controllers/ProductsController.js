@@ -14,6 +14,12 @@ module.exports = {
 
     addProduct: async (req, res) => {
         let newProduct = new product(req.body);
-        res.json(newProduct);
+        newProduct.save()
+            .then(() => {
+                res.status(200).json(newProduct);
+            })
+            .catch(() => {
+                res.status(400).send("unable to save to add product");
+            });
     }
 };
