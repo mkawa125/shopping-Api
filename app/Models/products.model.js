@@ -3,14 +3,15 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Products
 let Product = new Schema({
-    title: {
-        type: String
+        title: {
+            type: String
+        },
+        body: {
+            type: String
+        }
     },
-    body: {
-        type: String
-    }
-},{
-    collection: 'posts'
-});
+    {
+        collection: 'products'
+    });
 
 module.exports = mongoose.model('Product', Product);
