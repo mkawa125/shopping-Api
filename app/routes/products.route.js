@@ -1,15 +1,8 @@
 const Router = require('express');
 const router = new Router();
-const ProductsCOntroller = require('app/Controllers/ProductsController');
+const ProductsController = require('../Controllers/ProductsController');
 
-
-
-router.route('/').get(function (req, res) {
-    res.status(200).json({'business': 'business is added successfully'});
-});
-
-router.route('/add').post(function (req, res) {
-
-});
+//Product routes
+router.route('/').get(ProductsController.getProducts);
 
 module.exports=router;
