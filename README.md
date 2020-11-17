@@ -11,3 +11,11 @@
 
 
 ```
+
+### Database Setup
+
+`
+- Create databse
+- Add database info on .env
+- Connect with your database
+`
