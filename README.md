@@ -17,3 +17,9 @@
 
 - Connect with your database
 ```
+
+### Run Application
+> This should start server using nodemon because is already installed
+```sh
+- npm run dev
+```
