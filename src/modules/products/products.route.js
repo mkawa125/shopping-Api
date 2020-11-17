@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const ProductsController = require('../Controllers/ProductsController');
+const ProductsController = require('./products.controller');
 
 //Product routes
 router.route('/').get(ProductsController.getProducts);

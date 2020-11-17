@@ -1,4 +1,4 @@
-let product = require('../Models/products.model');
+let product = require('./products.model');
 
 module.exports = {
     getProducts: async (req, res) => {
