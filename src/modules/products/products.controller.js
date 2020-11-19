@@ -1,32 +1,17 @@
 let product = require('./products.model');
+const productService = require('./product.service');
 
 module.exports = {
     getProducts: async (req, res) => {
-        product.find(function (err, products) {
-            if (err) {
-                res.json(err);
-            }
-            else {
-                res.json(
-                    {
-                        "success": true,
-                        "message": "Products retrieved successfully",
-                        "products": products
-                    },
-                );
-            }
-        })
+        productService.getAllProducts()
+        .then(products => res.json(products))
+        .catch(err => next(err));
     },
 
     addProduct: async (req, res) => {
-        let newProduct = new product(req.body);
-        newProduct.save()
-            .then(() => {
-                res.status(200).json(newProduct);
-            })
-            .catch(() => {
-                res.status(400).send("unable to save to add product");
-            });
+        productService.addProduct(req.body)
+        .then(product => res.json(product))
+        .catch(err => next(err));
     },
 
     // Update Selected Product
