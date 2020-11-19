@@ -16,19 +16,17 @@ module.exports = {
 
     updateProduct: async (req, res) => {
         productService.updateProduct(req.params.id, req.body)
-        .then(product => res.json(product))
+        .then(product => res.status(200).json(product))
         .catch(err => next(err));
     },
 
     // Remove | Delete product from database
     deleteProduct: async (req, res) => {
-        product.findByIdAndRemove({_id: req.params.id}, function(err){
-            if(err) {
-                res.status(400).json(err);
-            }
-            else {
-                res.status(200).json('Product Successfully Delete');
-            }
-        });
+        productService.deleteProduct(req.params.id)
+        .then(() => res.status(200).json({
+            "userMessage": "Poduct deleted successfully",
+            "developerMessage": "Product successfully deleted",
+        }))
+        .catch(err => next(err));
     }
 };

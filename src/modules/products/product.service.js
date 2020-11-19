@@ -30,4 +30,8 @@ module.exports = {
 
         return await product.save()
     },
+
+    deleteProduct: async (productId) => {
+        const product = await productModel.findByIdAndDelete(productId);
+    }
 }
