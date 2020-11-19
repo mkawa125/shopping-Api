@@ -14,9 +14,10 @@ module.exports = {
         .catch(err => next(err));
     },
 
-    // Update Selected Product
     updateProduct: async (req, res) => {
-        res.json('Am edit this product')
+        productService.updateProduct(req.params.id, req.body)
+        .then(product => res.json(product))
+        .catch(err => next(err));
     },
 
     // Remove | Delete product from database

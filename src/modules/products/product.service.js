@@ -12,8 +12,22 @@ module.exports = {
         return await productModel.find();
     },
 
-    addProduct: async (userInput) => {
-        const product = new productModel(userInput);
+    addProduct: async (productParam) => {
+        const product = new productModel(productParam);
         return await product.save()
-    }
+    },
+
+    updateProduct: async (productId, productParam) => {
+        const product = await productModel.findById(productId);
+        if (!product) {
+            return ({
+                "userMessage": "Product not found",
+                "developerMessage": "Poduct with given id does not exist"
+            });
+        }
+        /** Copy productParam details to product  */
+        Object.assign(product, productParam);
+
+        return await product.save()
+    },
 }
